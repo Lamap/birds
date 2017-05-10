@@ -1,0 +1,14 @@
+{
+  "name": "birds",
+  "version": "1.0.0",
+  "description": "birds playing with birds",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "lamap",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^2.5.1"
+  }
+}
