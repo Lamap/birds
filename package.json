@@ -6,7 +6,7 @@
   "scripts": {
     "test": "test",
     "start": "./node_modules/.bin/webpack",
-    "start-server": "./node_modules/.bin/webpack-dev-server --port 3333"
+    "start-server": "node server.js"
   },
   "author": "lamap",
   "license": "ISC",
