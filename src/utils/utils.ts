@@ -1,0 +1,9 @@
+export default class Utils {
+	public static getRandomItem (items: any[]): any {
+		const index = this.getRandomNumberBetween(0, items.length - 1);
+		return items[index];
+	}
+	public static getRandomNumberBetween(min: number, max: number): number {
+		return Math.floor(Math.random() * (max - min + 1) + min);
+	}
+}
