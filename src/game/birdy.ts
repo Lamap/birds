@@ -12,7 +12,9 @@ export default class Birdy extends PIXI.Sprite {
 		let testBody: PIXI.Graphics = new PIXI.Graphics();
 		testBody.lineStyle(0);
 		testBody.beginFill(0xABCDEF, 1);
-		testBody.drawCircle(30, 30, 30);
+		testBody.drawRect(0, 0, 30, 30);
+		//testBody.drawCircle(30, 30, 30);
+
 		testBody.endFill();
 		this.addChild(testBody);
 
