@@ -11,12 +11,13 @@ export class ContraBird extends PIXI.Container {
 	private _BIRD_TYPES: string[] = [
 		"bird1",
 		"bird2",
-		"bird3"
+		"bird3",
+		"bird4"
 	];
 	private _BIRD_BUFFER: number = 100;
 	private _type: string;
 	private _speed: number = 2;
-	private _body: PIXI.Graphics;
+	private _body: PIXI.Sprite;
 
 	constructor() {
 		super();
@@ -33,35 +34,19 @@ export class ContraBird extends PIXI.Container {
 	private _create = () => {
 		switch (this._type) {
 			case "bird1":
-				//this._body = new PIXI.Sprite(PIXI.Texture.fromImage());
-				this._body = new PIXI.Graphics();
-				this._body.lineStyle(0);
-				this._body.beginFill(0xFF0000, 1);
-				this._body.drawRect(0, 0, 40, 40);
-				this._body.endFill();
+				this._body = new PIXI.Sprite(PIXI.Texture.fromImage("./assets/contraBirds/contra1.png"));
 				break;
 			case "bird2":
-				//this._body = new PIXI.Sprite(PIXI.Texture.fromImage());
-				this._body = new PIXI.Graphics();
-				this._body.lineStyle(0);
-				this._body.beginFill(0x00FF00, 1);
-				this._body.drawRect(0, 0, 40, 40);
-				this._body.endFill();
+				this._body = new PIXI.Sprite(PIXI.Texture.fromImage("./assets/contraBirds/contra2.png"));
 				break;
 			case "bird3":
-				//this._body = new PIXI.Sprite(PIXI.Texture.fromImage());
-				this._body = new PIXI.Graphics();
-				this._body.lineStyle(0);
-				this._body.beginFill(0x0000FF, 1);
-				this._body.drawRect(0, 0, 40, 40);
-				this._body.endFill();
+				this._body = new PIXI.Sprite(PIXI.Texture.fromImage("./assets/contraBirds/contra3.png"));
+				break;
+			case "bird4":
+				this._body = new PIXI.Sprite(PIXI.Texture.fromImage("./assets/contraBirds/contra4.png"));
 				break;
 			default:
-				this._body = new PIXI.Graphics();
-				this._body.lineStyle(0);
-				this._body.beginFill(0x0000FF, 1);
-				this._body.drawCircle(40, 40, 40);
-				this._body.endFill();
+				this._body = new PIXI.Sprite(PIXI.Texture.fromImage("./assets/contraBirds/contra1.png"));
 				break;
 		}
 		this.x = GAME_WIDTH + this._BIRD_BUFFER;

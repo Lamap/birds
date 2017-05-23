@@ -9,14 +9,9 @@ export default class Birdy extends PIXI.Sprite {
 		super();
 		console.log("Birdy init");
 
-		let testBody: PIXI.Graphics = new PIXI.Graphics();
-		testBody.lineStyle(0);
-		testBody.beginFill(0xABCDEF, 1);
-		testBody.drawRect(0, 0, 30, 30);
-		//testBody.drawCircle(30, 30, 30);
+		let body: PIXI.Sprite = new PIXI.Sprite(PIXI.Texture.fromImage("./assets/birdy.png"));
 
-		testBody.endFill();
-		this.addChild(testBody);
+		this.addChild(body);
 
 		this._keyNavigator = new KeyNavigation();
 		this._keyNavigator.on(KeyEvents.DOWN, this._moveDown);

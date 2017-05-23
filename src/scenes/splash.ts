@@ -2,7 +2,7 @@ import * as PIXI from 'pixi.js';
 import { TICKER } from "../app";
 
 export default class SplashSceen extends PIXI.Container {
-	private _BACKGROUND_IMAGE_SOURCE: string = "./assets/test.png";
+	private _BACKGROUND_IMAGE_SOURCE: string = "./assets/contraBirdsPage.png";
 
 	public ON_SPLASH_END: string = "onSplashEnd";
 
