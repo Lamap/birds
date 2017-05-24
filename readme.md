@@ -1,6 +1,6 @@
 # Birds
 ### A pixijs game
-A simple spaceship game but a littlebit reconsidered and wrapped into a specific desing.
+A simple spaceship game but a littlebit reconsidered and wrapped into a specific design.
 Instead of ship the main caracter is a colibry, what tries to avoid the flying crazy creatures.
 The colibry is able to catch flies that can spit to the bastards so avoid the danger. But eating flies has it's tradeoff: that makes it fat and slow, will be hard to move away from danger. So you have to choose the best tactic, or find the balance between fittness and defending.
 
