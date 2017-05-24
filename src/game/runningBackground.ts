@@ -2,8 +2,8 @@ import * as PIXI from 'pixi.js';
 import { TICKER, GAME_WIDTH, GAME_HEIGHT } from "../app";
 
 export default class ParalaxBackground extends PIXI.Container {
-	private _FAR_BG_SOURCE: string = "./assets/testBgFar.jpg";
-	private _CLOSE_BG_SOURCE: string = "./assets/testBgClose.png";
+	private _FAR_BG_SOURCE: string = "./assets/bgs/far-bg.svg";
+	private _CLOSE_BG_SOURCE: string = "./assets/bgs/close-bg.svg";
 
 	private _distanceFar: PIXI.extras.TilingSprite;
 	private _distanceClose: PIXI.extras.TilingSprite;
@@ -26,5 +26,10 @@ export default class ParalaxBackground extends PIXI.Container {
 	}
 	private _moveClose = () => {
 		this._distanceClose.tilePosition.x -= 1;
+	}
+
+	public kill = () => {
+		TICKER.remove(this._moveClose);
+		TICKER.remove(this._moveFar);
 	}
 }

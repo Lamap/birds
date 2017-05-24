@@ -1,7 +1,7 @@
 import * as PIXI from 'pixi.js';
 import SplashSceen from "./scenes/splash";
 import MainSceen from "./scenes/main";
-import Game from "./game/game";
+import { Game, Events as GameEvents } from "./game/game";
 
 export var TICKER: PIXI.ticker.Ticker;
 export var GAME_WIDTH: number = 800;
@@ -27,9 +27,10 @@ class App {
 	}
 
 	private _goToMainSceen = () => {
-		if (!this._mainSceen) {
-			this._mainSceen = new MainSceen();
-		}
+		this._cleanMainScene();
+		this._cleanGame();
+
+		this._mainSceen = new MainSceen();
 		this._app.stage.addChild(this._mainSceen);
 		this._mainSceen.on(this._mainSceen.GO_TO_GAME, this._goToGame);
 		this._mainSceen.on(this._mainSceen.GO_TO_EXIT, this._handleExit);
@@ -37,10 +38,24 @@ class App {
 
 	private _goToGame = () => {
 		console.log("gotoGame");
-		if (!this._game) {
-			this._game = new Game();
-		}
+		this._cleanMainScene();
+		this._cleanGame();
+		this._game = new Game();
+		this._game.addListener(GameEvents.GO_TO_MAIN, this._goToMainSceen);
+		this._game.addListener(GameEvents.RESTART_GAME, this._goToGame);
 		this._app.stage.addChild(this._game);
+	}
+	private _cleanGame = () => {
+		if (this._game) {
+			this._app.stage.removeChild(this._game);
+			this._game.destroy();
+		}
+	}
+	private _cleanMainScene = () => {
+		if (this._mainSceen) {
+			this._app.stage.removeChild(this._mainSceen);
+			this._mainSceen.destroy();
+		}
 	}
 	private _handleExit = () => {
 		console.log("exit");

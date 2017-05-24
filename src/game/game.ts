@@ -10,7 +10,13 @@ export interface IContraBirdPool {
 	[index: string]: ContraBird;
 };
 
-export default class Game extends PIXI.Container {
+export var Events = {
+	GAME_OVER: "gameOVer",
+	GO_TO_MAIN: "goToMain",
+	RESTART_GAME: "restartGame"
+}
+
+export class Game extends PIXI.Container {
 	private _background: Background;
 	private _birdy: Birdy;
 	private _contraBirds: IContraBirdPool = {};
@@ -21,6 +27,8 @@ export default class Game extends PIXI.Container {
 	private _contraBirdSetTimeOutId: number;
 
 	private _gameService: GameService;
+	private _newGameButton: PIXI.Text;
+	private _goBackButton: PIXI.Text;
 
 	constructor() {
 		super();
@@ -57,9 +65,14 @@ export default class Game extends PIXI.Container {
 
 	private _birdyGotHit = (killerBird: ContraBird) => {
 		console.log("Birdy got hit", killerBird);
+		this._showButtons();
 		this._gameService.stop();
-		killerBird.kill();
+		this._killAllBirds();
 		this._stopContraBirds();
+		this._background.kill();
+
+		//TODO: this kills the addChild too, figure out other proper and generic way of killing all animations
+		//TICKER.stop();
 	}
 
 	private _addContraBird = () => {
@@ -68,15 +81,42 @@ export default class Game extends PIXI.Container {
 		this.addChild(contraBird);
 		this._contraBirds[contraBird.id] = contraBird;
 		contraBird.addListener(ContraBirdEvents.DESTROYED, (id: string) => {
-			console.log(id);
 			delete this._contraBirds[id];
 		});
 		const nextTime: number = Utils.getRandomNumberBetween(this._contrBirdMinTime, this._contrBirdMaxTime) * 200;
-		console.log("nextTime:", nextTime, " ch length: ", this.children.length);
-		if (this.children.length > 10) {
-			console.error(new Error("too many items appeared"));
-		}
 		this._contraBirdSetTimeOutId = setTimeout(this._addContraBird, nextTime);
-		console.log(this._contraBirdSetTimeOutId);
 	};
+
+	private _showButtons = () => {
+		this._newGameButton = new PIXI.Text("You died, wanna try again?");
+		this._goBackButton = new PIXI.Text("Return to main");
+		this.addChild(this._goBackButton);
+		this.addChild(this._newGameButton);
+		this._goBackButton.x = (GAME_WIDTH - this._goBackButton.width) / 2;
+		this._newGameButton.x = (GAME_WIDTH - this._newGameButton.width) / 2;
+		this._newGameButton.y = 10;
+		this._goBackButton.y = 60;
+		this._goBackButton.buttonMode = true;
+		this._goBackButton.interactive = true;
+		this._newGameButton.buttonMode = true;
+		this._newGameButton.interactive = true;
+
+		this._newGameButton.addListener("mousedown", this._startNewGame);
+		this._goBackButton.addListener("mousedown", this._gotToMain);
+
+	}
+
+	private _startNewGame = () => {
+		this.emit(Events.RESTART_GAME);
+	}
+	private _gotToMain = () => {
+		this.emit(Events.GO_TO_MAIN);
+	}
+
+	private _killAllBirds = () => {
+		for (let i in this._contraBirds) {
+			const contraBird: ContraBird = this._contraBirds[i];
+			contraBird.kill();
+		}
+	}
 }

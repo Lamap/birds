@@ -55,8 +55,7 @@ export class ContraBird extends PIXI.Container {
 	};
 	private _move = () => {
 		this.x -= this._speed;
-		if (this.x < - this._BIRD_BUFFER) {
-			//TODO: remove contraBird
+		if (this.x < - this._BIRD_BUFFER - this.width) {
 			TICKER.remove(this._move);
 			this.parent.removeChild(this);
 			this.emit(Events.DESTROYED, this.id);

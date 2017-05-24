@@ -1,11 +1,11 @@
 import * as PIXI from 'pixi.js';
-import { TICKER } from "../app";
+import { TICKER, GAME_WIDTH, GAME_HEIGHT } from "../app";
 
 export default class MainSceen extends PIXI.Container {
 	public GO_TO_GAME: string = "goToGame";
 	public GO_TO_EXIT: string = "goToExit";
 
-	private _BACKGROUND_IMAGE_SOURCE: string = "./assets/test.png";
+	private _BACKGROUND_IMAGE_SOURCE: string = "./assets/scenes/main.png";
 	private _LOGO_IMAGE_SOURCE: string = "./assets/test.png";
 	private _EXIT_IMAGE_SOURCE: string = "./assets/test.png";
 
@@ -19,11 +19,13 @@ export default class MainSceen extends PIXI.Container {
 	constructor() {
 		super();
 		console.log("MainSceen init");
+		this._background = new PIXI.Sprite(PIXI.Texture.fromImage(this._BACKGROUND_IMAGE_SOURCE));
+		this.addChild(this._background);
 
-		this._game1Button = this._createTextButton("Game 1", 10, 10);
-		this._game2Button = this._createTextButton("Game2", 100, 10);
-		this._game3Button = this._createTextButton("Game3", 200, 10);
-		this._exitButton = this._createTextButton("Exit", 10, 500);
+		this._game1Button = this._createTextButton("Level 1", 10, 10);
+		this._game2Button = this._createTextButton("Level 2", 110, 10);
+		this._game3Button = this._createTextButton("Level 3", 210, 10);
+		this._exitButton = this._createTextButton("Exit", 10, GAME_HEIGHT - 30);
 
 		this.addChild(this._game1Button);
 		this.addChild(this._game2Button);
@@ -35,11 +37,11 @@ export default class MainSceen extends PIXI.Container {
 		this._game3Button.addListener("mousedown", this._gameClicked);
 		this._exitButton.addListener("mousedown", this._exitClicked);
 
+
 	}
 
 	private _gameClicked = () => {
 		this.emit(this.GO_TO_GAME);
-		this.parent.removeChild(this);
 	}
 
 	private _exitClicked = () => {

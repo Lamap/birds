@@ -48,17 +48,12 @@ export class GameService extends PIXI.utils.EventEmitter {
 		const b1: PIXI.Rectangle = body1.getBounds();
 		const b2: PIXI.Rectangle = body2.getBounds();
 		const over: number = overlap | 0;
-		//const check = b1.x + b1.width > b2.x && b1.x < b2.x + b2.width && b1.y + b1.height > b2.height && b1.y < b2.y + b2.height;
 	
 		const untouch = 
 			b2.x > b1.x + b1.width - over || 
            	b1.x > b2.x + b2.width - over || 
           	b2.y > b1.y + b1.height - over ||
          	b2.y + b2.height - over < b1.y
-
-		if (untouch) {
-			console.log(b1, b2);
-		}
 
 		return !untouch;
 	}
