@@ -12,37 +12,72 @@ The colibry is able to catch flies that can spit to the bastards so avoid the da
 
 ## TODOs - brief backlog
 ### phase 1
-- Add animation library and refine colibry's movement
-- Refine game element collision
-- Add flies
-- First level of animations
-    - Wings and propellers
-- Finish game element graphics
-    - Cutting out
-    - Turn some to svg
-    - coloring
+- [ ] Add animation library and refine colibry's movement
+- [ ] Refine game element collision
+- [ ] Add flies
+- [ ] First level of animations
+    - [ ] Wings and propellers
+- [ ] Finish game element graphics
+    - [ ] Cutting out
+    - [ ] Turn some to svg
+    - [ ] coloring
     
 ### phase 2
-- Collect and handle of all assets load
-    - to be loaded together
-    - at the beginning
-    - show preloader
-- Second level of animations
-  - Engine smoke
-  - Engine stirrings
-  - Teeth movings
-  - Eyes open/close
-- Cathcing flies
-  - beak opening
-  - getting weight
-  - Count and display catches, available shots
-- Fly shooting, simple hit
-- Explosion on fly hit
+- [ ] Collect and handle of all assets load
+    - [ ] to be loaded together
+    - [ ] at the beginning
+    - [ ] show preloader
+- [ ] Second level of animations
+  - [ ] Engine smoke
+  - [ ] Engine stirrings
+  - [ ] Teeth movings
+  - [ ] Eyes open/close
+- [ ] Cathcing flies
+  - [ ] beak opening
+  - [ ] getting weight
+  - [ ] Count and display catches, available shots
+- [ ] Fly shooting, simple hit
+- [ ] Explosion on fly hit
+
+### phase 3
+ - [ ] Add sounds
+    - [ ] wing sounds
+    - [ ] engine sounds
+    - [ ] fly sound
+    - [ ] handle left-right moving
 
 ## Game characters
 ### The colibry
+![Alt text](/assets/birdy.png "The main character")
+* wing snapping
+* open it's bake (for catching fly, can catch them only with opened)
+* getting & losing weight
+* eye move
+
 ### Bastard#1
+![Alt text](/assets/contraBirds/contra1.png "The bastard 1")
+* propeller rotation
+* smoke
+* engine pistons pounding
+* teeth growing, moving
+
 ### Bastard#2
+![Alt text](/assets/contraBirds/contra2.png "The bastard 2")
+* propeller rotation
+* smoke
+* engine pistons pounding
+* teeth growing, moving
+
 ### Bastard#3
+![Alt text](/assets/contraBirds/contra3.png "The bastard 3")
+* propeller rotation
+* eye move
+
 ### Bastard#4
+![Alt text](/assets/contraBirds/contra4.png "The bastard 4")
+* propeller rotation
+* eye move
+
 ### Flies
+![Alt text](/assets/contraBirds/fly.png "The small fly")
+* wing snapping
