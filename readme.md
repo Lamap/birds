@@ -12,16 +12,16 @@ The colibry is able to catch flies that can spit to the bastards so avoid the da
 
 ## TODOs - brief backlog
 ### phase 1
-- [ ] Add animation library and refine colibry's movement
-- [ ] Refine game element collision
-- [ ] Add flies
-- [ ] First level of animations
+- [ ] Particle animation for smoke emittion and explotions
+- [ ] First level of spritesheet animations
     - [ ] Wings and propellers
 - [ ] Finish game element graphics
     - [ ] Cutting out
     - [ ] Turn some to svg
     - [ ] coloring
-    
+- [ ] Add tween library and refine colibry's movement
+- [ ] Refine game element collision
+- [ ] Add flies
 ### phase 2
 - [ ] Collect and handle of all assets load
     - [ ] to be loaded together
