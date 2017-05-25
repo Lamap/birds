@@ -1,6 +1,9 @@
 import * as PIXI from 'pixi.js';
 import { TICKER, GAME_WIDTH, GAME_HEIGHT } from "../app";
 import Utils from "../utils/utils";
+import * as particles from "pixi-particles";
+import { settings as EXPLOTION_SETTINGS } from "./contraBirdExplotion";
+
 
 export var Events = {
 	DESTROYED: "contraBirdDestroyed"
@@ -15,9 +18,13 @@ export class ContraBird extends PIXI.Container {
 		"bird4"
 	];
 	private _BIRD_BUFFER: number = 100;
+	private _EXPLOTION_PARTICLE_IMAGE: string = "./assets/contraBirds/explotion-particle.png";
+
 	private _type: string;
 	private _speed: number = 2;
 	private _body: PIXI.Sprite;
+	private _explotion: particles.Emitter;
+	private _explotionLifeTime = 0;
 
 	constructor() {
 		super();
@@ -29,6 +36,9 @@ export class ContraBird extends PIXI.Container {
 
 	public kill() {
 		TICKER.remove(this._move);
+		this._explotion = new particles.Emitter(this, [PIXI.Texture.fromImage(this._EXPLOTION_PARTICLE_IMAGE)], EXPLOTION_SETTINGS);
+		this._explotion.emit = true;
+		TICKER.add(this._exploding);
 	}
 
 	private _create = () => {
@@ -62,5 +72,14 @@ export class ContraBird extends PIXI.Container {
 
 			this.destroy();
 		}
+	}
+
+	private _exploding = () => {
+		if (this._explotionLifeTime > this._explotion.emitterLifetime) {
+			TICKER.remove(this._exploding);
+		}
+		this._explotion.update(this._explotionLifeTime);
+		this._explotionLifeTime++;
+		this.alpha -= 0.2;
 	}
 }

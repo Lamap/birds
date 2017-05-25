@@ -67,9 +67,11 @@ export class Game extends PIXI.Container {
 		console.log("Birdy got hit", killerBird);
 		this._showButtons();
 		this._gameService.stop();
-		this._killAllBirds();
+		killerBird.kill();
+		//this._killAllBirds();
 		this._stopContraBirds();
 		this._background.kill();
+		this._birdy.throwAway();
 
 		//TODO: this kills the addChild too, figure out other proper and generic way of killing all animations
 		//TICKER.stop();

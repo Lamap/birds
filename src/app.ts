@@ -2,7 +2,6 @@ import * as PIXI from 'pixi.js';
 import SplashSceen from "./scenes/splash";
 import MainSceen from "./scenes/main";
 import { Game, Events as GameEvents } from "./game/game";
-import * as particles from "pixi-particles";
 
 export var TICKER: PIXI.ticker.Ticker;
 export var GAME_WIDTH: number = 800;
@@ -25,10 +24,6 @@ class App {
 		
 		this._app.stage.addChild(this._splashSceen);
 		this._splashSceen.on(this._splashSceen.ON_SPLASH_END, this._goToMainSceen);
-
-		let testContainer: PIXI.Container = new PIXI.Sprite();
-		let test: particles.Emitter = new particles.Emitter(testContainer, null, null);
-		console.log(test);
 	}
 
 	private _goToMainSceen = () => {

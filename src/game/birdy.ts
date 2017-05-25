@@ -5,6 +5,8 @@ import { KeyNavigation, Events as KeyEvents } from "../utils/keyNavigation";
 export default class Birdy extends PIXI.Sprite {
 	private _keyNavigator: KeyNavigation;
 
+	private _THROW_SPEED: number = 1;
+
 	constructor() {
 		super();
 		console.log("Birdy init");
@@ -19,6 +21,10 @@ export default class Birdy extends PIXI.Sprite {
 		this._keyNavigator.on(KeyEvents.LEFT, this._moveLeft);
 		this._keyNavigator.on(KeyEvents.RIGHT, this._moveRight);
 	}
+	public throwAway = () => {
+		//TODO: should be done with tweening it looks weird without
+		//TICKER.add(this._throwing);
+	};
 
 	private _moveDown = () => {
 		this._move(new PIXI.Point(0, 20));
@@ -37,4 +43,10 @@ export default class Birdy extends PIXI.Sprite {
 		this.x += movement.x;
 		this.y += movement.y;
 	}
+	private _throwing = () => {
+		this.x -= this._THROW_SPEED * 10;
+		this.y -= this._THROW_SPEED * 10;
+		this.rotation += this._THROW_SPEED * 0.4;
+	}
+	
 }
