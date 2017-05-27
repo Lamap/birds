@@ -12,7 +12,7 @@ The colibry is able to catch flies that can spit to the bastards so avoid the da
 
 ## TODOs - brief backlog
 ### phase 1
-- [ ] Particle animation for smoke emittion and explotions
+- [x] Particle animation for smoke emittion and explotions
 - [ ] First level of spritesheet animations
     - [ ] Wings and propellers
 - [ ] Finish game element graphics
@@ -45,6 +45,7 @@ The colibry is able to catch flies that can spit to the bastards so avoid the da
     - [ ] engine sounds
     - [ ] fly sound
     - [ ] handle left-right moving
+- [ ] Refine smoke and explition effects
 
 ## Game characters
 ### The colibry
