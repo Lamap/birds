@@ -80,7 +80,7 @@ The colibry is able to catch flies that can spit to the bastards so avoid the da
 * eye move
 
 ### Bastard#5
-![Alt text](/assets/contraBirds/gep0001.png "The bastard 5")
+![Alt text](/assets/contraBirds/gep0001.jpg "The bastard 5")
 * smoking
 * each part stirs
 
